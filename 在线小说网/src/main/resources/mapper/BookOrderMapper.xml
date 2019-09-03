@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.dao.BookOrderMapper">
+
+    <resultMap id="bookOrderResultMap" type="com.xh.pojo.BookOrder">
+        <id property="orderid" column="orderid"/>
+        <result property="orderPrice" column="orderPrice"/>
+        <result property="orderDate" column="orderDate"/>
+        <result property="userId" column="readerId"/>
+        <result property="bookId" column="bookId"/>
+        <result property="discountId" column="discountId"/>
+        <result property="orderStatus" column="orderStatus"/>
+        <result property="payStatus" column="payStatus"/>
+        <result property="payWay" column="payWay"/>
+        <association property="book" javaType="com.xh.pojo.Book" column="bookId" select="com.xh.dao.BookMapper.findById"/>
+       </resultMap>
+
+
+    <!--<select id="findAll" resultType="com.xh.pojo.BookOrder">-->
+        <!--select * from bookorder;-->
+    <!--</select>-->
+    <insert id="save" parameterType="com.xh.pojo.BookOrder">
+        insert into bookorder(orderPrice, orderDate,readerId,bookId, discountId, orderStatus, payStatus, payWay)
+        values  (
+                #{orderPrice},
+                #{orderDate},
+                #{userId},
+                #{bookId},
+                #{discountId},
+                #{orderStatus},
+                #{payStatus},
+                #{payWay}
+        )
+    </insert>
+
+    <select id="findList" resultType="com.xh.pojo.BookOrder">
+        select * from bookorder  where orderStatus!=3  order by orderid desc
+    </select>
+    <!--更新状态-->
+    <update id="updateStatus">
+        update bookorder set orderStatus=#{status} where orderid=#{id}
+    </update>
+ <!--批量的更改状态-->
+    <update id="batchUpdateStatus" parameterType="int[]">
+        update bookorder set orderStatus=3 where orderid in
+<foreach collection="array" item="orderid" open="(" separator="," close=")">
+    #{orderid}
+</foreach>
+
+
+
+
+    </update>
+    <update id="deleteById">
+        update  bookorder set orderid=#{orderid}
+    </update>
+
+
+    <select id="findByUserId" parameterType="java.lang.String" resultType="com.xh.pojo.BookOrder">
+          select * from bookorder where readerId like #{keyword}
+    </select>
+
+    <select id="findByReaderId" parameterType="Integer" resultMap="bookOrderResultMap">
+          select * from bookorder where readerId =#{readerId}
+    </select>
+
+</mapper>

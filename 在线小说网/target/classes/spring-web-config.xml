@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+    <!--扫描包: controller-->
+    <context:component-scan base-package="com.xh.controller"/>
+
+    <!--使用推荐的 适配器以及映射器-->
+    <mvc:annotation-driven/>
+
+    <!--视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--前缀-->
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <!--后缀-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--放行静态资源-->
+    <mvc:resources mapping="/static/**" location="/static/"/>
+
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--拦截所有的方法-->
+            <mvc:mapping path="/**"/>
+            <!--不拦截的方法-->
+            <mvc:exclude-mapping path="/loginPage"/>
+            <mvc:exclude-mapping path="/login"/>
+            <mvc:exclude-mapping path="/shiduPage"/>
+            <mvc:exclude-mapping path="/shidu"/>
+            <mvc:exclude-mapping path="/novelPage"/>
+            <mvc:exclude-mapping path="/novel"/>
+            <mvc:exclude-mapping path="/admin/add"/>
+            <mvc:exclude-mapping path="/admin/addPage"/>
+            <bean class="com.xh.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!--文件解析器-->
+    <bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >
+        <!--文件限制的大小-->
+        <property name="maxUploadSizePerFile" value="200000"></property>
+
+        <!--默认编码-->
+        <property name="defaultEncoding" value="utf-8"></property>
+    </bean>
+
+</beans>

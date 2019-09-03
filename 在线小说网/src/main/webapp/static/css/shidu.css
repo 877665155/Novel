@@ -1,0 +1,247 @@
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-decoration: none;
+}
+.clearfix:after{
+	content: "";
+	height: 0px;
+	clear: both;
+	visibility: hidden;
+	line-height: 0px;
+	display: block;
+}
+.public{
+	width: 100%;
+	margin: auto;
+}
+img{
+	vertical-align: middle;
+}
+header{
+	width: 100%;
+	height: 120px;
+	background-color:rgba(254,254,254);
+	color: #FFFFFF;
+	box-sizing: border-box;
+	/* position: fixed; */
+	left: 0;
+	top: 0;
+	z-index: 999;
+}
+/* header a{
+	color: black;
+} */
+header a:hover{
+	color:#00c3b6;
+}
+header .public .logoTo{
+    height: 60px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 20px; */
+	/* border-bottom: 1px solid #CCCCCC; */
+	line-height: 60px;
+}
+header .public .logoTo .logoTo_left{
+	float: left;
+	height: 60px;
+}
+header .public .logoTo .logoTo_left>a{
+	display: inline-block;
+	/*line-height: 60px;*/
+	font-size: 18px;
+	margin-right: 4px;
+}
+header .public .logoTo .logoTo_left>a img{
+	height: 54px;
+}
+header .public .logoTo .logoTo_right{
+    float: left;
+    margin-left: 250px;
+	height: 100%;
+}
+
+header .public .logoTo .logoTo_right .logoTo_right_sou{
+	margin-left: 10px;
+	display: inline-block;
+	position: relative;
+}
+header .public .logoTo .logoTo_right .logoTo_right_sou input{
+	outline: none;
+	border: medium none;
+	-webkit-appearance: none;
+	width: 100%;
+    height: 40px;
+    color: #CCCCCC;
+	border: 2px solid red;
+	border-radius: 20px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+header .public .logoTo .logoTo_right .logoTo_right_sou span{
+	position: absolute;
+	display: block;
+	background:url(../images/sousuo01.png) no-repeat;
+	background-size: 20px 20px;
+	width: 20px;
+	height: 20px;
+	top: calc(50% - 10px);
+    right: 15px;
+    
+	cursor: pointer;
+}
+header .public .logoTo .logoTo_right .logoTo_right_sou span:hover{
+	filter: invert(78%) sepia(15%) saturate(1042%) hue-rotate(118deg) brightness(89%) contrast(94%);
+}
+header .public .logoTo .logoTo_after a{
+    color: black;
+    margin-right: 20px;
+    float: right;
+}
+header .public .logoTo .logoTo_after img{
+    height: 30px;
+    vertical-align: middle;
+}
+header .public ul{
+    line-height: 40px;
+    background: red;
+    margin-top: 20px;
+}
+header .public>ul{
+    width: 100%;
+    height: 50px;
+	cursor: pointer;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+header .public>ul>li{
+	float: left;
+	overflow: hidden;
+	box-sizing: border-box;
+	width: 10%;
+	height: 50px;
+}
+
+
+
+header .public>ul>li>ul>li a{
+	color:rgba(255,255,255);
+}
+header .public>ul>li>ul>li:hover a{
+	color:#00c3b6;
+}
+
+header .public>ul>li .logoTo_dddd{
+	color:rgba(255,255,255);
+}
+header .public>ul>li:hover .logoTo_dddd{
+	color:rgba(255,255,255,.7);
+}
+/* ---------------------------------二级导航-------------------------------------- */
+html{
+    background: rgb(233, 227, 214);
+}
+
+.daohang{
+    width: 70%;
+    height: 30px;
+    line-height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    /* margin-left: 40px; */
+    margin-bottom: 20px;
+}
+.daohang a{
+    color: black;
+    font-size: 14px;
+}
+/* ------------------------------------简介---------------------------------------*/
+.novelduce{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 1px solid #CCCCCC;
+    background: rgba(255,255,255,.7);
+    padding: 5px;
+    margin-bottom: 30px;
+}
+.duce{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    /* background: rgba(255,255,255,.7); */
+    border: 1px solid #CCCCCC;
+}
+.duce img{
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+.duce h1{
+    margin-top: 20px;
+}
+.duce span{
+    font-size: 14px;
+    color: rgb(156, 156, 156);
+}
+.duce ul li{
+    width: 30%;
+    font-size: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.duce p{
+    margin-bottom: 30px;
+}
+.contentNovel{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    /* text-align: center; */
+    border: 1px solid #CCCCCC;
+    background: rgba(255,255,255,.7);
+    padding: 5px;
+    padding-top: 25px;
+    margin-bottom: 30px;
+}
+.contentNovel h1{
+    margin-left: 50px;
+    margin-right: 50px;
+    
+}
+.contentNovel ul{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.contentNovel ul li{
+    /* width: 10%; */
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+    font-size: 14px;
+    color: rgb(156, 156, 156);
+}
+.novelCont{
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 20px;
+    letter-spacing: 5px;
+}
+.novelCont p{
+    margin-top: 10px;
+}
+.contentNovel button{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 40%;
+    background: none;
+    border: none;
+    font-size: 20px;
+}

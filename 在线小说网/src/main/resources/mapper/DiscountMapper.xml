@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.dao.DiscountMapper">
+
+    <insert id="save" parameterType="com.xh.pojo.Discount">
+     insert into discount (actName, startDate, endDate, actStatus)
+     values (
+     #{actName},
+     #{startDate},
+     #{endDate},
+     #{actStatus}
+     );
+
+    </insert>
+
+    <select id="findList" resultType="com.xh.pojo.Discount">
+        select * from discount  where actStatus!=3  order by actId desc
+    </select>
+    <!--更新状态-->
+    <update id="updateStatus">
+        update discount set actStatus=#{status} where actId=#{id}
+    </update>
+    <!--批量的更改状态-->
+    <update id="batchUpdateStatus" parameterType="int[]">
+        update discount set actStatus=3 where actId in
+        <foreach collection="array" item="actId" open="(" separator="," close=")">
+            #{actId}
+        </foreach>
+
+    </update>
+    <update id="deleteById">
+        update  discount set actId=#{actId}
+    </update>
+    
+    <!--通过id查询数据-->
+    <select id="findById" resultType="com.xh.pojo.Discount">
+        select * from discount where actId=#{id}
+        
+    </select>
+    <!--更新活动基本信息-->
+    <update id="update" parameterType="com.xh.pojo.Discount">
+        update discount set actName=#{actName},startDate=#{startDate},endDate=#{endDate}
+        where actId=#{actId}
+    </update>
+
+
+    <select id="findByactName" parameterType="java.lang.String" resultType="com.xh.pojo.Discount">
+          select * from discount where actName like #{keyword}
+    </select>
+</mapper>

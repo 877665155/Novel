@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.dao.RechargeOrderMapper">
+    <!--<select id="findAll" resultType="com.xh.pojo.BookOrder">-->
+    <!--select * from bookorder;-->
+    <!--</select>-->
+    <insert id="save" parameterType="com.xh.pojo.RechargeOrder">
+        insert into rechargeorder (userId, rechargeMoney, rechargeDate, rechargeStatus, rechargeWay)
+        values (
+        #{userId},
+        #{rechargeMoney},
+        #{rechargeDate},
+        #{rechargeStatus},
+        #{rechargeWay}
+        );
+    </insert>
+
+    <select id="findList" resultType="com.xh.pojo.RechargeOrder">
+        select * from rechargeorder  where rechargeStatus!=3  order by rechargeId desc
+    </select>
+
+    <update id="updateStatus">
+        update rechargeorder set rechargeStatus=#{status} where rechargeId=#{id}
+    </update>
+
+    <!--批量的更改状态-->
+    <update id="batchUpdateStatus" parameterType="int[]">
+    update rechargeorder set rechargeStatus=3 where rechargeId in
+    <foreach collection="array" item="rechargeId" open="(" separator="," close=")">
+        #{rechargeId}
+    </foreach>
+    </update>
+
+    <update id="deleteById">
+        update  rechargeorder set rechargeId=#{rechargeId}
+    </update>
+
+    <!--通过用户Id查找-->
+    <select id="findByUserId" parameterType="java.lang.String" resultType="com.xh.pojo.RechargeOrder">
+          select * from rechargeorder where readerId like #{keyword}
+    </select>
+
+</mapper>

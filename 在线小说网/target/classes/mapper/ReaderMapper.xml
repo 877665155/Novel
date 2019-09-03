@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.dao.ReaderMapper">
+
+
+
+    <select id="findByrName" parameterType="java.lang.String" resultType="com.xh.pojo.Reader">
+    select * from reader where readerName=#{readerName}  ;
+  </select>
+
+    <!--保存数据-->
+    <insert id="save" parameterType="com.xh.pojo.Reader">
+        insert into reader
+        (readerName, readerPhone, readerEmail, password, readerAddTime, readerStatus)
+        values
+        (
+          #{readerName},
+          #{readerPhone},
+          #{readerEmail},
+          #{password},
+          #{readerAddTime},
+          #{readerStatus}
+        );
+    </insert>
+
+    <!--查询所有的列表数据-->
+    <select id="findList"  resultType="com.xh.pojo.Reader">
+        select * from reader where readerStatus != 2 order by readerId desc
+    </select>
+
+    <!--更新读者状态-->
+    <update id="updateStatus" >
+      update reader set readerStatus=#{readerStatus} where readerId=#{readerId}
+    </update>
+
+    <!--通过id查询数据-->
+    <select id="findById" resultType="com.xh.pojo.Reader">
+        select * from reader where readerId=#{readerId}
+    </select>
+
+    <!--更新读者基本信息-->
+    <update id="update" parameterType="com.xh.pojo.Reader">
+        update reader set readerName=#{readerName},readerAge=#{readerAge},
+        readerSex=#{readerSex},readerEmail=#{readerEmail},readerPhone=#{readerPhone}
+        where readerId=#{readerId}
+    </update>
+
+
+    <!--批量更改状态：软删除-->
+    <update id="batchUpdateStatus" parameterType="int[]">
+        update reader set readerStatus=2 where readerId in
+        <!--动态sql-->
+        <foreach collection="array" item="readerId" open="(" separator="," close=")">
+            #{readerId}
+        </foreach>
+    </update>
+
+    <!--通过用户名查询数据-->
+    <select id="findByName" parameterType="java.lang.String" resultType="com.xh.pojo.Reader">
+        select * from reader where readerName like #{keyword}
+    </select>
+
+
+    <!--删除读者信息-->
+    <update id="deleteById">
+        update reader set readerStatus=2 where readerId=#{readerId}
+    </update>
+
+    <!--查询所有删除的数据-->
+    <select id="findDeleteList"  resultType="com.xh.pojo.Reader">
+        select * from reader where readerStatus = 2 order by readerId desc
+    </select>
+
+    <!--批量更改状态：软删除-->
+    <update id="deleteUpdateStatus" parameterType="int[]">
+        update reader set readerStatus=1 where readerId in
+        <!--动态sql-->
+        <foreach collection="array" item="readerId" open="(" separator="," close=")">
+            #{readerId}
+        </foreach>
+    </update>
+</mapper>

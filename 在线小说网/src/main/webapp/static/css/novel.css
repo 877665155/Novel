@@ -1,0 +1,448 @@
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-decoration: none;
+}
+.clearfix:after{
+	content: "";
+	height: 0px;
+	clear: both;
+	visibility: hidden;
+	line-height: 0px;
+	display: block;
+}
+.public{
+	width: 100%;
+	margin: auto;
+}
+img{
+	vertical-align: middle;
+}
+header{
+	width: 100%;
+	height: 120px;
+	background-color:rgba(254,254,254);
+	color: #FFFFFF;
+	box-sizing: border-box;
+	/* position: fixed; */
+	left: 0;
+	top: 0;
+	z-index: 999;
+}
+/* header a{
+	color: black;
+} */
+header a:hover{
+	color:#00c3b6;
+}
+header .public .logoTo{
+    height: 60px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+	/* border-bottom: 1px solid #CCCCCC; */
+	line-height: 60px;
+}
+header .public .logoTo .logoTo_left{
+	float: left;
+	height: 60px;
+}
+header .public .logoTo .logoTo_left>a{
+	display: inline-block;
+	/*line-height: 60px;*/
+	font-size: 18px;
+	margin-right: 4px;
+}
+header .public .logoTo .logoTo_left>a img{
+	height: 54px;
+}
+header .public .logoTo .logoTo_right{
+    float: left;
+    margin-left: 250px;
+	height: 100%;
+}
+
+header .public .logoTo .logoTo_right .logoTo_right_sou{
+	margin-left: 10px;
+	display: inline-block;
+	position: relative;
+}
+header .public .logoTo .logoTo_right .logoTo_right_sou input{
+	outline: none;
+	border: medium none;
+	-webkit-appearance: none;
+	width: 100%;
+    height: 40px;
+    color: #CCCCCC;
+	border: 2px solid red;
+	border-radius: 20px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+header .public .logoTo .logoTo_right .logoTo_right_sou span{
+	position: absolute;
+	display: block;
+	background:url(../images/sousuo01.png) no-repeat;
+	background-size: 20px 20px;
+	width: 20px;
+	height: 20px;
+	top: calc(50% - 10px);
+    right: 15px;
+    
+	cursor: pointer;
+}
+header .public .logoTo .logoTo_right .logoTo_right_sou span:hover{
+	filter: invert(78%) sepia(15%) saturate(1042%) hue-rotate(118deg) brightness(89%) contrast(94%);
+}
+header .public .logoTo .logoTo_after a{
+    color: black;
+    margin-right: 20px;
+    float: right;
+}
+header .public .logoTo .logoTo_after img{
+    height: 30px;
+    vertical-align: middle;
+}
+header .public ul{
+    line-height: 40px;
+    background: red;
+    margin-top: 20px;
+}
+header .public>ul{
+    width: 100%;
+    height: 50px;
+	cursor: pointer;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+header .public>ul>li{
+	float: left;
+	overflow: hidden;
+	box-sizing: border-box;
+	width: 10%;
+	height: 50px;
+}
+
+
+
+header .public>ul>li>ul>li a{
+	color:rgba(255,255,255);
+}
+header .public>ul>li>ul>li:hover a{
+	color:#00c3b6;
+}
+
+header .public>ul>li .logoTo_dddd{
+	color:rgba(255,255,255);
+}
+header .public>ul>li:hover .logoTo_dddd{
+	color:rgba(255,255,255,.7);
+}
+/* ------------------------二级导航--------------------- */
+.daohang{
+    width: 70%;
+    height: 30px;
+    line-height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    /* margin-left: 40px; */
+    margin-bottom: 20px;
+}
+.daohang a{
+    color: black;
+    font-size: 14px;
+}
+/* ------------------------------作品信息--------------------------- */
+section{
+    width: 100%;
+    background: url(../images/flower_left.0bed9.png) no-repeat;
+    background-size: contain;
+    background-color: rgb(255, 245, 245);
+}
+.bookintro{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #FFFFFF;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+.bookintro .bookImg{
+    float: left;
+    margin-right: 20px;
+    box-shadow: 5px 5px 5px rgb(223, 221, 221,.5);
+}
+.introRight h1{
+    display: inline-block;
+    margin-right: 20px;
+}
+.introRight span{
+    font-size: 14px;
+}
+.introRight ul{
+    height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.introRight ul li{
+    /* width: 7%; */
+    height: 10px;
+    float: left;
+    text-align: center;
+    line-height: 10px;
+    font-size: 14px;
+    margin-right: 20px;
+    padding: 5px;
+    border: 1px solid rgb(43, 46, 247);
+    color: rgb(43, 46, 247);
+}
+.introRight p{
+    width: 60%;
+    margin-top: 20px;
+}
+.introRight button{
+    height: 40px;
+    width: 13%;
+    /* border: none; */
+    background: none;
+    border: 1px solid rgb(247, 43, 85);
+    color: rgb(247, 43, 85);
+    border-radius: 50px;
+    margin-top: 50px;
+    margin-right: 30px;
+}
+.introRight button a{
+    color: rgb(247, 43, 85);
+}
+/* --------------------------------------作品介绍------------------------------------------ */
+.bookInfo{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+.infoHeader{
+    width: 70%;
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+.bookInfo .infoHeader h2{
+    width: 20%;
+    height: 38px;
+    text-align: center;
+    font-weight: normal;
+    display: inline-block;
+}
+.bookInfo .infoHeader span{
+    font-size: 14px;
+}
+.bookInfo .infoHeader .firstHeader{
+    color: rgb(247, 43, 85);
+    border-bottom: 2px solid rgb(247, 43, 85);
+    /* margin-bottom: 20px; */
+}
+/* --------------------------------作者信息---------------------------------- */
+.infoleft{
+    width: 70%;
+    background: #FFFFFF;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    float: left;
+    
+}
+.author{
+	width: 10%;
+	float: left;
+    text-align: center;
+    margin-right: 20px;
+}
+ .author img{
+    width: 50px;
+    border-radius: 50%;
+ }
+.author span{
+	display: block;
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+}
+/* .journalContent_left .userJournal{
+	width: 942px;
+	margin-bottom: 20px;
+	border-top: 1px solid #E4E4E4;
+	padding-top: 20px;
+} */
+.content{
+	width: 70%;
+	float: left;
+}
+.content h2{
+	width: 70%;
+	height: 40px;
+	line-height: 40px;
+	float: left;
+	margin: 0;
+}
+.content a{
+	color: rgb(26, 25, 25);
+	font-weight: normal;
+}
+.content .replay{
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+	float: right;
+	text-align: right;
+}
+.content .replay img{
+	width: 15px;
+}
+.content .replay span{
+	font-size: 14px;
+	color: #5c5a5a;
+	margin-right: 10px;
+}
+.content .info li{
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	color: #5c5a5a;
+	margin-right: 20px;
+	float: left;
+}
+.content p{
+	margin-top: 10px;
+}
+.content .journalImg li{
+	width: 20%;
+	height: 200px;
+	float: left;
+	margin-top: 20px;
+}
+.content .journalImg li img{
+	width: 100%;
+}
+.content .journalImg :nth-child(-n+3){
+	margin-right: 10px;
+}
+.content .imgCount1{
+	display: block;
+	width: 70px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	font-size: 14px;
+	background: #5c5a5a;
+	color: #FFFFFF;
+	position: absolute;
+	top: 710px;
+}
+.bgImg{
+    width: 100%;
+}
+.pingjia{
+    width: 100%;
+    margin-top: 50px;
+    padding-bottom: 20px;
+}
+.pingjia h2{
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #E4E4E4;
+    margin-bottom: 20px;
+}
+.pingjia img{
+    width: 7%;
+}
+.pingjia input{
+    width: 90%;
+    height: 50px;
+    color: #CCCCCC;
+}
+/* ---------------------------------右边----------------------------------------- */
+.journalContent_right{
+	width: 20%;
+    float: right;
+    background: #FFFFFF;
+    border-radius: 5px;
+	
+}
+.journalContent_right .journalClassification{
+	/* margin-top: 10px; */
+	border: 1px solid #E4E4E4;
+}
+.journalContent_right .journalClassificationheader{
+	margin-top: 20px;
+	margin-left: 20px;
+	
+}
+.journalContent_right .journalClassificationheader img{
+	height: 50px;
+}
+.journalContent_right .journalClassificationheader h2{
+	height: 50px;
+	line-height: 50px;
+	display: inline-block;
+	color: rgb(26, 25, 25);
+	font-weight: normal;
+}
+.journalContent_right .journalClassification ul{
+	margin-left: 32px;
+	margin-top: 40px;
+}
+.journalContent_right .journalClassification ul li{
+	height: 50px;
+	line-height: 50px;
+	font-size: 14px;
+}
+.journalContent_right .journalClassification ul li img{
+	height: 10px;
+	margin-right: 10px;
+}
+.journalContent_right .journalRanking{
+	margin-top: 60px;
+	border: 1px solid #E4E4E4;
+}
+.journalContent_right .journalRanking .rankingHeader{
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.journalContent_right .rankingHeader img{
+	height: 50px;
+	margin-top: -10px;
+}
+.journalContent_right .rankingHeader h2{
+	height: 50px;
+	line-height: 50px;
+	display: inline-block;
+	color: rgb(26, 25, 25);
+	font-weight: normal;
+}
+.journalContent_right .journalRanking ul{
+	margin-left: 32px;
+	margin-top: 40px;
+}
+.journalContent_right .journalRanking ul li{
+	height: 80px;
+}
+.journalContent_right .journalRanking ul li img{
+	height: 40px;
+	float: left;
+	margin-right: 20px;
+}
+.journalContent_right .journalRanking ul li .userInfo{
+	float: left;
+}
+.journalContent_right .journalRanking ul li h3{
+	font-weight: normal;
+}
+.journalContent_right .journalRanking ul li p{
+	font-size: 14px;
+	color: #5c5a5a;
+}

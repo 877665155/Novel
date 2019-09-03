@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.dao.BookMapper">
+
+    <resultMap id="bookResultMap" type="com.xh.pojo.Book">
+        <id property="bookId" column="bookId"/>
+        <result property="bookName" column="bookName"/>
+        <result property="bookType" column="bookType"/>
+        <result property="author" column="author"/>
+        <result property="authorId" column="authorId"/>
+        <result property="bookPrice" column="bookPrice"/>
+        <result property="releaseTime" column="releaseTime"/>
+        <result property="updateSection" column="updateSection"/>
+        <result property="chapterNumber" column="chapterNumber"/>
+        <result property="condition" column="condition"/>
+        <result property="score" column="score"/>
+        <association property="author1" javaType="com.xh.pojo.Author" column="authorId" select="com.xh.dao.AuthorMapper.findById"/>
+        <association property="bookDetail" javaType="com.xh.pojo.BookDetail" column="bookId" select="com.xh.dao.BookDetailMapper.findByBookId"></association>
+        <collection property="chapterList" ofType="com.xh.pojo.Chapter" column="bookId" javaType="ArrayList" select="com.xh.dao.ChapterMapper.findByBookId"></collection>
+    </resultMap>
+
+
+
+<!--保存数据-->
+  <insert id="save" parameterType="com.xh.pojo.Book">
+    insert into book
+    (bookName,bookType,author,authorId,bookPrice,releaseTime,updateSection,chapterNumber,`condition`,score)
+    values (
+          #{bookName},
+          #{bookType},
+          #{author},
+          #{authorId},
+          #{bookPrice},
+          #{releaseTime},
+          #{updateSection},
+          #{chapterNumber},
+          #{condition},
+          #{score}
+    );
+  </insert>
+
+  <!--查询所有数据-->
+  <select id="findList" resultMap="bookResultMap">
+#       select * from book where condition !=3 order by bookId desc
+      select * from book where `condition` != 3 order by bookId desc
+  </select>
+
+    <!--更新状态-->
+
+    <update id="updateStatus">
+        update book set `condition`=#{condition} where bookId=#{bookId};
+    </update>
+
+    <!--通过id查询数据-->
+    <select id="findById" resultMap="bookResultMap">
+        select * from book where bookId=#{bookId}
+    </select>
+
+    <!--更新员工基本信息-->
+    <update id="update" parameterType="com.xh.pojo.Book">
+        update book set bookName=#{bookName} ,bookType=#{bookType} ,author=#{author},authorId=#{authorId},bookPrice=#{bookPrice},updateSection=#{updateSection},chapterNumber=#{chapterNumber},score=#{score}
+        where bookId=#{bookId}
+    </update>
+
+    <!--批量更改状态-->
+    <update id="batchUpdateStatus" parameterType="int[]">
+        update book set `condition`=3 where bookId in
+#         动态sql
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+
+    <!--search-->
+    <select id="findByName" parameterType="java.lang.String" resultMap="bookResultMap">
+        select * from book where bookName like CONCAT(CONCAT('%', #{keyword}),'%');
+    </select>
+
+    <select id="findByAuthor" parameterType="java.lang.String" resultType="com.xh.pojo.Book">
+        select * from book where author like #{keyword1}
+    </select>
+
+    <!--List<Book> findByType(Integer  type);-->
+    <select id="findByType" parameterType="java.lang.Integer" resultMap="bookResultMap">
+        select * from book where bookType=#{bookType} and `condition` in(1,2)
+    </select>
+
+
+
+</mapper>

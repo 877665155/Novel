@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.dao.MessageMapper">
+    <resultMap id="MessageResultMap" type="com.xh.pojo.Message">
+        <id column="messageId" property="messageId" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="bookId" property="bookId" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="readerId" property="readerId" jdbcType="INTEGER" javaType="INTEGER"/>
+        <result column="messageContent" property="messageContent" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="messageDate" property="messageDate" jdbcType="TIMESTAMP" javaType="Date"/>
+        <association property="reader" column="readerId" javaType="com.xh.pojo.Reader" select="com.xh.dao.ReaderMapper.findById"/>
+        <!--<collection property="replyList" ofType="com.xhu.agriculture.repository.Reply" column="id"-->
+                    <!--select="com.xhu.agriculture.dao.CommentDao.listByComId"></collection>-->
+    </resultMap>
+
+    <!--查询所有的列表数据-->
+    <select id="findAll" resultType="com.xh.pojo.Message">
+        select * from message order by messageId desc
+    </select>
+
+    <!--&lt;!&ndash;保存数据&ndash;&gt;-->
+    <!--<insert id="save" parameterType="com.xh.pojo.Message">-->
+        <!--insert into message-->
+        <!--(messageContent)-->
+        <!--values (-->
+          <!--#{messageContent}-->
+        <!--)-->
+    <!--</insert>-->
+
+    <!--插入一条数据-->
+    <insert id="save" parameterType="com.xh.pojo.Message">
+        INSERT into
+        message(`bookId`,`readerId`,`messageContent`,`messageDate`)
+        values(#{bookId},#{readerId},#{messageContent},current_timestamp)
+    </insert>
+
+    <!--通过id查询数据-->
+    <select id="findById" resultType="com.xh.pojo.Message">
+        select * from message where messageId=#{messageId}
+    </select>
+
+
+    <!--更新留言信息-->
+    <update id="update" parameterType="com.xh.pojo.Message">
+        update message set messageContent=#{messageContent}
+        where messageId=#{messageId}
+    </update>
+
+    <!--批量删除-->
+    <delete id="delete" parameterType="int[]">
+         delete from message where messageId in
+         <foreach collection="array" item="messageId" open="(" separator="," close=")">
+             #{messageId}
+         </foreach>
+    </delete>
+    <!--通过书名查询数据-->
+    <select id="findName" parameterType="java.lang.String" resultType="com.xh.pojo.Message">
+        select * from message where bookName like #{keyword}
+    </select>
+
+    <!--通过书籍id查询所有留言-->
+    <select id="findByBookId" parameterType="Integer" resultMap="MessageResultMap">
+        select * from message where bookId =#{bookId}
+    </select>
+
+</mapper>

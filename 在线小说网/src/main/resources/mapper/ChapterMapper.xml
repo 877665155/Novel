@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.dao.ChapterMapper">
+
+
+
+
+<!--保存数据-->
+  <insert id="save" parameterType="com.xh.pojo.Chapter">
+    insert into chapter
+    (bookId, chapterName, chapterContent, chapterWordNumber, updateTime)
+    values (
+         #{bookId},
+         #{chapterName},
+         #{chapterContent},
+         #{chapterWordNumber},
+         #{updateTime}
+    );
+  </insert>
+
+  <!--查询所有数据-->
+  <select id="findList" resultType="com.xh.pojo.Chapter">
+      select * from chapter order by chapterId desc
+  </select>
+
+    <!--通过id查询数据-->
+    <select id="findById" resultType="com.xh.pojo.Chapter">
+        select * from chapter where chapterId=#{chapterId}
+    </select>
+
+    <!--更新信息-->
+    <update id="update" parameterType="com.xh.pojo.Chapter">
+        update chapter set chapterName=#{chapterName},chapterContent=#{chapterContent},chapterWordNumber=#{chapterWordNumber}
+        where chapterId=#{chapterId}
+    </update>
+
+    <!--search-->
+    <select id="findByContent" parameterType="java.lang.String" resultType="com.xh.pojo.Chapter">
+        select * from chapter where chapterContent like #{keyword}
+    </select>
+
+    <update id="batchUpdateStatus" parameterType="int[]">
+        delete from chapter  where chapterId in
+        #         动态sql
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+
+
+    <!-- Chapter findByBookIdFist(Integer bookId);-->
+    <select id="findByBookId" parameterType="Integer"  resultType="com.xh.pojo.Chapter">
+        select * from chapter where bookId=#{bookId}
+    </select>
+
+</mapper>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.dao.AuthorMapper">
+
+
+
+  <!--查询所有用户-->
+    <select id="findByaName" parameterType="java.lang.String" resultType="com.xh.pojo.Author">
+    select * from author where authorName=#{authorName}  ;
+  </select>
+
+    <!--保存数据-->
+    <insert id="save" parameterType="com.xh.pojo.Author">
+        insert into author
+        ( authorName, authorSex, authorPhone, authorLogo, authorHobby, authorFeature,authorAddTime,authorStatus)
+        values (
+                #{authorName},
+                #{authorSex},
+                #{authorPhone},
+                #{authorLogo},
+                #{authorHobby},
+                #{authorFeature},
+                #{authorAddTime},
+                #{authorStatus}
+        );
+    </insert>
+
+    <!--查询所有的列表数据-->
+    <select id="findList"  resultType="com.xh.pojo.Author">
+        select * from author where authorStatus != 2 order by authorId desc
+    </select>
+
+    <!--更新作者状态-->
+    <update id="updateStatus" >
+      update author set authorStatus=#{authorStatus} where authorId=#{authorId}
+    </update>
+
+    <!--通过id查询数据-->
+    <select id="findById" resultType="com.xh.pojo.Author">
+        select * from author where authorId=#{authorId}
+    </select>
+
+    <!--更新作者基本信息-->
+    <update id="update" parameterType="com.xh.pojo.Author">
+        update author set authorName=#{authorName},
+        authorSex=#{authorSex},authorPhone=#{authorPhone},authorLogo=#{authorLogo},authorPhone=#{authorHobby},authorFeature=#{authorFeature}
+        where authorId=#{authorId}
+    </update>
+
+
+    <!--批量更改状态：软删除-->
+    <update id="batchUpdateStatus" parameterType="int[]">
+        update author set authorStatus=2 where authorId in
+        <!--动态sql-->
+        <foreach collection="array" item="authorId" open="(" separator="," close=")">
+            #{authorId}
+        </foreach>
+    </update>
+
+    <!--通过用户名查询数据-->
+    <select id="findByName" parameterType="java.lang.String" resultType="com.xh.pojo.Author">
+        select * from author where authorName like #{keyword}
+    </select>
+
+
+    <!--删除作者信息-->
+    <update id="deleteById">
+        update author set authorStatus=2 where authorId=#{authorId}
+    </update>
+
+    <!--查询所有删除的数据-->
+    <select id="findDeleteList"  resultType="com.xh.pojo.Author">
+        select * from author where authorStatus = 2 order by authorId desc
+    </select>
+
+    <!--批量更改状态：软删除-->
+    <update id="deleteUpdateStatus" parameterType="int[]">
+        update author set authorStatus=1 where authorId in
+        <!--动态sql-->
+        <foreach collection="array" item="authorId" open="(" separator="," close=")">
+            #{authorId}
+        </foreach>
+    </update>
+</mapper>
