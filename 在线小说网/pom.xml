@@ -20,7 +20,7 @@
     <!--规定spring的版本-->
     <spring.version>4.3.16.RELEASE</spring.version>
     <!--mybatis版本-->
-    <mybatis.version>3.4.6</mybatis.version>
+    <mybatis.version>3.5.6</mybatis.version>
   </properties>
 
   <dependencies>
