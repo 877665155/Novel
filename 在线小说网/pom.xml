@@ -18,7 +18,7 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <!--规定spring的版本-->
-    <spring.version>4.3.16.RELEASE</spring.version>
+    <spring.version>5.2.21.RELEASE</spring.version>
     <!--mybatis版本-->
     <mybatis.version>3.4.6</mybatis.version>
   </properties>
